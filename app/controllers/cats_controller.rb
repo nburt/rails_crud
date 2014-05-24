@@ -9,8 +9,12 @@ class CatsController < ApplicationController
   end
 
   def create
-    Cat.create(secure_params)
-    redirect_to cats_path
+    @cat = Cat.new(secure_params)
+    if @cat.save
+      redirect_to cats_path
+    else
+      render new_cat_path
+    end
   end
 
   def show

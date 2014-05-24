@@ -42,4 +42,12 @@ feature 'crudding cats' do
     expect(page).to have_no_content 'brown'
   end
 
+  scenario 'user cannot enter blank name and color when creating a cat' do
+    visit '/cats'
+    click_on 'Add Cat'
+    click_on 'Create Cat'
+    expect(page).to have_content 'Name can\'t be blank'
+    expect(page).to have_content 'Color can\'t be blank'
+  end
+
 end
