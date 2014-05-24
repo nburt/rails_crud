@@ -34,4 +34,12 @@ feature 'crudding cats' do
     expect(page).to have_content 'black'
   end
 
+  scenario 'a user can delete a cat' do
+    visit '/cats'
+    click_on 'Spot'
+    click_on 'Delete Cat'
+    expect(page).to have_no_content 'Spot'
+    expect(page).to have_no_content 'brown'
+  end
+
 end
