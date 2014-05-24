@@ -9,8 +9,22 @@ class CatsController < ApplicationController
   end
 
   def create
-    @cat = Cat.create(secure_params)
+    Cat.create(secure_params)
     redirect_to cats_path
+  end
+
+  def show
+    @cat = Cat.find(params[:id])
+  end
+
+  def edit
+    @cat = Cat.find(params[:id])
+  end
+
+  def update
+    cat = Cat.find(params[:id])
+    cat.update(secure_params)
+    redirect_to cat_path
   end
 
   private
@@ -20,3 +34,4 @@ class CatsController < ApplicationController
   end
 
 end
+
